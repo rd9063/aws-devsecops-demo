@@ -1,2 +1,525 @@
-Welcome Ravi
-My first AWS CI/CD project.
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravi Dangi | Security Architecture & DevSecOps Lead</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#070b19',
+                            800: '#0f172a',
+                            700: '#1e293b',
+                        },
+                        cyan: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                        },
+                        violet: {
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #070b19;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-nav {
+            background: rgba(7, 11, 25, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #22d3ee, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+            border-color: rgba(6, 182, 212, 0.5);
+        }
+        
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            background: rgba(34, 211, 238, 0.1);
+            border-color: #06b6d4;
+            color: #22d3ee;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -5px;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #06b6d4;
+            box-shadow: 0 0 10px #06b6d4;
+        }
+        
+        /* Utility for staggered animation */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #070b19; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+
+    <!-- Background Effects -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-violet-600/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
+        <div class="absolute top-[20%] right-[-10%] w-[40%] h-[40%] bg-cyan-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-[-20%] left-[20%] w-[40%] h-[40%] bg-blue-600/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-4000"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="font-heading font-bold text-2xl tracking-tighter text-white">
+                        RAVI<span class="text-cyan-400">.</span>DANGI
+                    </span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">About</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">Expertise</a>
+                    <a href="#experience" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">Experience</a>
+                    <a href="#contact" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">Contact</a>
+                </div>
+                <div class="hidden md:flex">
+                    <a href="#contact" class="px-5 py-2.5 rounded-full border border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 transition-all font-medium text-sm">
+                        Let's Connect
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-nav border-t border-slate-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50">Expertise</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50">Experience</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-cyan-400 hover:bg-slate-800/50">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card border-cyan-500/30 text-cyan-300 text-sm font-medium mb-6 animate-fade-in-up">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                    </span>
+                    Available for Leadership Roles
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-heading font-extrabold tracking-tight mb-6 animate-fade-in-up delay-100">
+                    <span class="block text-white mb-2">Ravi Dangi</span>
+                    <span class="block text-gradient text-3xl md:text-5xl mt-4">Security Architecture & DevSecOps Lead</span>
+                </h1>
+                
+                <p class="mt-6 text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-200">
+                    Over <span class="text-white font-semibold">10+ years</span> of expertise engineering enterprise-grade network and security infrastructure. Specialist in cloud security, threat modeling, and large-scale zero-trust deployments.
+                </p>
+                
+                <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-300">
+                    <a href="#experience" class="px-8 py-3.5 rounded-full bg-cyan-500 text-navy-900 font-semibold hover:bg-cyan-400 transition-colors shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+                        Explore Experience
+                    </a>
+                    <a href="#contact" class="px-8 py-3.5 rounded-full glass-card border border-slate-600 text-white font-semibold hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
+                        <i class="far fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+                
+                <div class="mt-16 pt-8 border-t border-slate-800/50 flex flex-wrap justify-center gap-8 text-slate-500 animate-fade-in-up delay-300">
+                    <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-cyan-500"></i> Gurugram, Haryana</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-phone-alt text-cyan-500"></i> +91 7206686369</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-envelope text-cyan-500"></i> rd9063@gmail.com</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Summary -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-8 md:p-12 hover-glow transition-all duration-500">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+                    <div class="lg:col-span-1">
+                        <h2 class="text-3xl font-heading font-bold text-white mb-4">Professional <span class="text-cyan-400">Summary</span></h2>
+                        <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full mb-6"></div>
+                        <p class="text-slate-400 leading-relaxed">
+                            Delivering secure, high-performing architectures that enable business growth and mitigate enterprise risks globally.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-2 space-y-6">
+                        <p class="text-lg text-slate-300 leading-relaxed">
+                            Experienced Design & Architecture Engineer specializing in DevSecOps, cloud security, and enterprise payment platforms. Proven track record in solution design, large-scale deployments, performance tuning, and compliance governance.
+                        </p>
+                        <p class="text-lg text-slate-300 leading-relaxed">
+                            Deep expertise in implementing and optimizing enterprise-grade solutions across <strong class="text-white">Checkpoint, Cisco ASA, Palo Alto, Azure Cloud Infrastructure, Zscaler (ZIA/ZPA),</strong> and advanced security technologies including <strong class="text-white">Akamai CDN, WAF, Bot Management, and McAfee Web Gateway.</strong> Strong leadership in mentoring teams, managing critical escalations, and conducting rigorous threat modeling (STRIDE).
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-slate-700/50">
+                            <div>
+                                <div class="text-3xl font-bold text-cyan-400 mb-1">10+</div>
+                                <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">Years Exp.</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-violet-400 mb-1">200+</div>
+                                <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">Firewalls Managed</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-cyan-400 mb-1">24/7</div>
+                                <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">Enterprise Escalations</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-violet-400 mb-1">100%</div>
+                                <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">Compliance Focus</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">Core <span class="text-cyan-400">Expertise</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill Category 1 -->
+                <div class="glass-card rounded-2xl p-8 hover-glow">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-2xl mb-6">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Network & Cloud Security</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">Check Point Firewall</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">Palo Alto</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">Cisco ASA</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">Azure Cloud Security</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">AWS Security</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">Zscaler (ZIA/ZPA)</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">IPSec & SSL VPN</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 2 -->
+                <div class="glass-card rounded-2xl p-8 hover-glow">
+                    <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-400 text-2xl mb-6">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Web, App & Edge Security</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">Akamai CDN / WAF</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">Bot Management</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">McAfee Web Gateway</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">API Security</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">DDoS Mitigation</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">OWASP Top 10</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">Threat Modeling (STRIDE)</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 3 -->
+                <div class="glass-card rounded-2xl p-8 hover-glow">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-2xl mb-6">
+                        <i class="fas fa-user-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Compliance, IAM & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">Skybox Compliance</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">DevSecOps (Jira, Zephyr)</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">HIPAA, SOC 2, PCI-DSS</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">NIST Framework</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">CyberArk (PAM)</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">RBAC / MFA</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg border border-slate-700 text-sm text-slate-300">SOAR Automation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">Professional <span class="text-cyan-400">Journey</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full mx-auto"></div>
+            </div>
+
+            <div class="relative border-l-2 border-slate-800 ml-3 md:ml-0">
+                
+                <!-- Experience 1 -->
+                <div class="mb-12 relative pl-8 md:pl-10">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card rounded-2xl p-6 md:p-8 hover-glow transition-all duration-300">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 gap-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white">Security Managed Services Associate Manager</h3>
+                                <p class="text-cyan-400 font-medium">Accenture Solutions Pvt Ltd <span class="text-slate-500 hidden md:inline-block px-2">|</span> <span class="block md:inline text-slate-400 text-sm">Gurugram, Haryana</span></p>
+                            </div>
+                            <div class="inline-block px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-medium whitespace-nowrap self-start">
+                                Feb 2026 - Present
+                            </div>
+                        </div>
+                        <ul class="space-y-3 text-slate-300 list-disc list-inside marker:text-cyan-500">
+                            <li>Digital Security Lead for nationwide projects involving enterprise cloud payment platforms.</li>
+                            <li>Integrated security practices into the application design phase for early vulnerability identification.</li>
+                            <li>Conducted application threat modeling using the <strong>STRIDE framework</strong> to proactively identify design-level flaws.</li>
+                            <li>Created Data Flow Diagrams (DFDs) representing system components, trust boundaries, and external entities.</li>
+                            <li>Performed attack surface analysis for APIs, web interfaces, and authentication endpoints.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="mb-12 relative pl-8 md:pl-10">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card rounded-2xl p-6 md:p-8 hover-glow transition-all duration-300">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 gap-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white">Design, Architecture & Implementation Engineer</h3>
+                                <p class="text-cyan-400 font-medium">British Telecom <span class="text-slate-500 hidden md:inline-block px-2">|</span> <span class="block md:inline text-slate-400 text-sm">Gurugram, Haryana</span></p>
+                            </div>
+                            <div class="inline-block px-4 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-sm font-medium whitespace-nowrap self-start">
+                                Dec 2022 - Feb 2026
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-sm italic mb-4">Core focus: Checkpoint Firewall, MWG, Zscaler (ZIA/ZPA), Akamai CDN, and Skybox Compliance.</p>
+                        <ul class="space-y-3 text-slate-300 list-disc list-inside marker:text-violet-500">
+                            <li>Managed <strong>200+ firewalls</strong> globally, including on-prem Palo Alto, Azure-hosted, and Akamai WAF platforms.</li>
+                            <li>Executed major infrastructure migrations: McAfee Web Gateway to Checkpoint, and Zscaler no-auth server traffic to Checkpoint.</li>
+                            <li>Led Bot identification, mitigation, and Advanced Bot Protection deployments for airline industry customers.</li>
+                            <li>Managed global WAF implementations (Banking/Insurance) and full lifecycle management of SSL certificates.</li>
+                            <li>Authored comprehensive HLD/LLD documentation outlining architecture, network topology, and security policies.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="mb-12 relative pl-8 md:pl-10">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card rounded-2xl p-6 md:p-8 hover-glow transition-all duration-300">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 gap-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white">Technical Specialist II</h3>
+                                <p class="text-cyan-400 font-medium">HCL Technologies</p>
+                            </div>
+                            <div class="inline-block px-4 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-sm font-medium whitespace-nowrap self-start">
+                                Jan 2022 - Dec 2022
+                            </div>
+                        </div>
+                        <ul class="space-y-3 text-slate-300 list-disc list-inside marker:text-cyan-500">
+                            <li>Developed and optimized complex security policies (granular access, identity-based rules).</li>
+                            <li>Configured Check Point clusters in Active/Active & Active/Standby modes for mission-critical failover.</li>
+                            <li>Deployed Advanced Threat Prevention modules (IPS, Anti-Bot, Threat Emulation) with HTTPS inspection.</li>
+                            <li>Took end-to-end ownership of P1/P2 incidents, root cause analysis, and workflow automation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="mb-12 relative pl-8 md:pl-10">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card rounded-2xl p-6 md:p-8 hover-glow transition-all duration-300">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 gap-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white">Infrastructure & Security Engineer</h3>
+                                <p class="text-cyan-400 font-medium">Softenger / Adecco India <span class="text-slate-500 hidden md:inline-block px-2">|</span> <span class="block md:inline text-slate-400 text-sm">Delhi</span></p>
+                            </div>
+                            <div class="inline-block px-4 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-sm font-medium whitespace-nowrap self-start">
+                                Mar 2015 - Jan 2021
+                            </div>
+                        </div>
+                        <ul class="space-y-3 text-slate-300 list-disc list-inside marker:text-violet-500">
+                            <li>Provided 24/7 SLO-level support for critical Data Centre security operations.</li>
+                            <li>Administered Checkpoint Firewalls (5900/21400) and Cisco ASA 5580.</li>
+                            <li>Implemented 3-tier zone-based security architecture (MZ, DMZ, Internet).</li>
+                            <li>Led major firewall migration projects and collaborated directly with vendor Escalation Managers (HPE, Checkpoint).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-16 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-heading font-bold text-white mb-4"><span class="text-cyan-400">Education</span></h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card rounded-xl p-6 flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">B.Tech in Electronics & Communication</h4>
+                        <p class="text-slate-400 text-sm mt-1">Swami Devi Dyal Group of Professional Institutes, Kurukshetra</p>
+                        <p class="text-slate-500 text-sm mt-2 font-medium">Jul 2009 - Dec 2013</p>
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl p-6 flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center text-violet-400 shrink-0">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">Higher Secondary (12th Grade)</h4>
+                        <p class="text-slate-400 text-sm mt-1">Kendriya Vidyalaya No 2, Roorkee</p>
+                        <p class="text-slate-500 text-sm mt-2 font-medium">Apr 2008 - May 2009 <span class="text-slate-400 ml-2">| GPA: 75.4</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section id="contact" class="py-20 relative border-t border-slate-800/50 mt-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">Ready to secure your enterprise?</h2>
+            <p class="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">
+                Whether you need to scale cloud security, refine your architecture, or fortify your application endpoints, I'm available for a conversation.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-16">
+                <a href="mailto:rd9063@gmail.com" class="group flex items-center gap-3 px-6 py-4 rounded-xl glass-card hover-glow w-full sm:w-auto">
+                    <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider">Email Me</p>
+                        <p class="text-white font-medium">rd9063@gmail.com</p>
+                    </div>
+                </a>
+                
+                <a href="tel:+917206686369" class="group flex items-center gap-3 px-6 py-4 rounded-xl glass-card hover-glow w-full sm:w-auto">
+                    <div class="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center text-violet-400 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider">Call Me</p>
+                        <p class="text-white font-medium">+91 7206686369</p>
+                    </div>
+                </a>
+            </div>
+            
+            <p class="text-sm text-slate-500">
+                &copy; <script>document.write(new Date().getFullYear())</script> Ravi Dangi. All rights reserved. 
+                <br class="sm:hidden"> Security Architecture & DevSecOps Lead based in Gurugram.
+            </p>
+        </div>
+    </section>
+
+    <!-- JavaScript for Mobile Menu & Scroll Effect -->
+    <script>
+        // Mobile menu toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar blur effect on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+                nav.style.background = 'rgba(7, 11, 25, 0.95)';
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.style.background = 'rgba(7, 11, 25, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
